@@ -1,107 +1,121 @@
-/* Start make all thumbnail with same height ... Cheack JS code*/
-.row { 
-    display: flex;
-    display: inline-block;
+*{
+  box-sizing: border-box;
 }
 
-.thumbnail img { 
-    max-height: 220px; 
-    min-height: 220px;
+body{
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-.thumbnail .caption { 
-    height: calc(100% - 220px);
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-}
-
-.thumbnail .caption > div { 
-    width: 100%; 
-}
-/* End make all thumbnail with same height */
-
-#navbar ul li a{
-    font-size: 18px;
-    font-family: cursive;
-}
-
+/* Start navbar */
+.navbar-nav li a,
 .navbar-brand{
-    font-size: 22px;
-    font-weight: bold;
-    font-family: cursive;
+  cursor: pointer;
 }
 
-.thumbnail h3{
-    font-weight: bold;
-    color: #AAA;
-}
+/* End navbar */
 
-.jumbotron{
-    padding: 15px 20px;
-}
-
-.jumbotron h1{
-    font-weight: bold;
-    color: rgb(255, 117, 117);
-    font-family: cursive;
-}
-
-.addBtn{
-    width: 150px;
-    margin-top: 10px;
-}
-
-span.price{
-    position: absolute;
-    background-color: #87D37C;
-    padding: 5px 20px;
-    color: #FFF;
-    font-size: 18px;
-    top: 16px;
-}
-
-@media screen and (min-width: 767px) {
-    .sidebar-offcanvas{
-        position: fixed;
-        right: 20px;
-    }
-}
-
-.orderedItems h4{
-    color: red;
-}
-
-.orderedItems .buyNow{
-    margin-left: 20px;
+/* Start order List*/
+@media screen and (max-width: 992px) {
+  .orderList{
     display: none;
+  }
 }
 
-.orderedItems ul{
-    padding: 2px;
+/* Finish order List*/
+
+/* Start Main Page */
+.page{
+  padding-top: 85px;
+  padding-bottom: 40px;
+}
+
+.mainPage{
+  position: relative;
+}
+
+.mainPage .header{
+  width: 96%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 15px 30px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  margin-left: 18px;
+}
+
+.mainPage .header h1{
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: rgba(248, 0, 0, 0.64);
+  font-family: cursive;
+}
+
+.mainPage .header p{
+  font-size: 22px;
+  color: #717171;
+}
+
+.mainPage ul{
+  list-style: none;
+  margin-left: -40px;
+}
+
+.mainPage ul img{
+  max-height: 175px !important;
+}
+
+.mainPage .price{
+  background-color: rgba(8, 109, 13, 0.61);
+  padding: 6px 19px;
+  font-size: 18px;
+  font-weight: bold;
+  position: absolute;
+  top: 17px;
+  color: rgb(255, 255, 255);
+}
+
+.mainPage h3{
+  color: #aaa;
+  font-weight: bold;
+}
+
+.mainPage input[type=number]{
+  margin-bottom: 10px;
+}
+
+.mainPage .thumbnail{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.orderedItems{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .orderedItems ul li{
-    list-style: none;
-    border: 1px solid #DDD;
-    padding: 0 15px;
-    margin-bottom: 2px;
-}
-.orderedItems ul li:last-child{
-    padding: 15px;
-}
-
-form.paypal{
-    display: inline-block;
+  border: 1px solid #aaa;
+  padding: 5px 10px;
+  margin: 10px 5px;
+  list-style: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-button.yourOrdersBtn{
-    position: fixed;
-    top: 114px;
-    font-size: 14px;
-    right: -31px;
-    transform: rotate(-90deg);
-    z-index: 10;
+.orderedItems ul li h4{
+  color: rgba(248, 0, 0, 0.64);
+  font-weight: bold;
 }
 
-    
+.orderedItems ul li p{
+  margin-bottom: 2px;
+}
+
+.orderedItems .buyNow{
+  margin: 10px 20px;
+  padding: 10px;
+}
+
+.orderedItems .buyNow button{
+  margin-top: 8px;
+}
+/* End Main Page*/
