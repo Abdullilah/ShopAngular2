@@ -23,9 +23,17 @@ import {Contact} from "./contact";
 })
 
 export class NewItemComponent {
+  public contacts: Contact[];
+
   constructor(private _contactService: ContactService){}
-  onAddContact(myObect, numberIn){
-    let contact: Contact = {name: myObect.title, price: myObect.price, number: numberIn.value, result: myObect.price*numberIn.value};
+  onAddContact(myObect, numberIn) {
+    let contact:Contact = {
+      name: myObect.title,
+      price: parseInt(myObect.price),
+      number: parseInt(numberIn.value),
+      result: parseInt(myObect.price) * parseInt(numberIn.value)
+    };
     this._contactService.insertContact(contact);
   }
+
 }

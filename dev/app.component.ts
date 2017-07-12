@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, ElementRef} from 'angular2/core';
 import {NavComponent} from "./nav.component";
 import {FoodsComponent} from "./foods.component";
 import {DrinksComponent} from "./drinks.component";
@@ -15,22 +15,21 @@ import {ContactService} from "./contact.service";
           <section class="page">
             <div class="container">
               <div class="row">
-                <div class="col-sm-12 col-md-9 mainPage">
-                  <router-outlet></router-outlet>
+                <div class="col-xs-12 col-md-9 mainPage">
+                    <router-outlet></router-outlet>
                 </div>
-                <div  class="col-md-3 orderList">
+                <div  class="col-xs-12 col-sm-8 col-md-3 orderList">
                   <div class="list-group orderedItems">
                     <div class="list-group-item active">Your Orders</div>
                       <ul class="list-group-item">
                         <li *ngFor="#obj of contacts">
-                          <h4>Name: {{obj.name}}</h4>
+                          <h4>{{obj.name}} $ {{obj.result}}</h4>
                           <p>Price: $ {{obj.price}}</p>
                           <p>Number: {{obj.number}}</p>
-                          <p>cost: $ {{obj.result}}</p>
                         </li>
                       </ul>
-                      <div class="buyNow">
-                        <b>Total Cost:</b><span>$ {{totalPrice}}</span><br>
+                      <div class="buyNow" *ngIf="contacts?.length > 0">
+                        <b>Total Cost:</b><span class="totalCost">$ {{totalPrice}}</span><br>
                         <button class="btn btn-primary" [disabled]="contacts?.length <= 0">Buy Now</button>
                       </div>
                   </div>
@@ -38,10 +37,10 @@ import {ContactService} from "./contact.service";
               </div>
             </div> 
           </section>
-          
     `,
   directives: [NavComponent, StartComponent, FoodsComponent, DrinksComponent, ItemsComponent, ROUTER_DIRECTIVES],
-  providers: [ContactService]
+  providers: [ContactService],
+  styleUrls: ['../css/style.css']
 })
 
 @RouteConfig([
@@ -52,19 +51,19 @@ import {ContactService} from "./contact.service";
 ])
 export class AppComponent {
   public contacts: Contact[];
-  public totalPrice : number;
-  constructor(private _contactService: ContactService){}
+  public totalPrice: number = 0;
+  constructor(private _contactService: ContactService){
+    setInterval(() => {
+      var sum = 0;
+      for(var i in this.contacts) { sum += this.contacts[i].result; }
+      this.totalPrice = sum;
+    }, 500);
+  }
   ngOnInit():any {
     this.getContacts();
-    this.totalPrice = 0;
   }
-
   getContacts(){
     this._contactService.getContact().then((contacts: Contact[])=> this.contacts = contacts);
   }
-  //noinspection JSAnnotator
 
-  // for (let entry of contacts) {
-  //   this.totalPrice += entry.result;
-  // }
 }
